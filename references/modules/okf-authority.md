@@ -11,7 +11,7 @@ Pure format authority for Open Knowledge Format (OKF) **v0.2**.
 
 OKF is an open, human- and agent-friendly format for representing knowledge as a directory of Markdown files with YAML frontmatter. It is intentionally minimal: if you can `cat` a file and `git clone` a repo, you can use it.
 
-This skill implements the pure format standard only. It knows nothing about live knowledge-store operations (ingest, query, lint of a session store). Those belong to the operational skill (currently `okf-wiki`, being redesigned as Atlas).
+This skill implements the pure format standard only. It knows nothing about live knowledge-store operations (ingest, query, lint of a session store). Those belong to Atlas (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`).
 
 ## Normative rules (hard)
 
@@ -114,5 +114,5 @@ A bundle is conformant when:
 
 ## When to hand off
 
-- Live session store / Atlas work → the operational skill (`okf-wiki` / Atlas)
+- Live knowledge-store / Atlas work → `atlas mount github.com/sergio-sisternes-epam/okf-atlas` (compile/query root `.../okf-atlas/atlas`). Do not use `okf-wiki` for new process memory.
 - Pure format / compliance / validation questions → stay here

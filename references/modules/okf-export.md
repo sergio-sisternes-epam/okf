@@ -1,17 +1,17 @@
 ---
 name: okf-export
-description: Produce a portable Open Knowledge Format v0.2 bundle from the current session wiki. Trigger on export wiki, export as OKF, create OKF bundle, download knowledge bundle.
+description: Produce a portable Open Knowledge Format v0.2 bundle from the live Atlas knowledge store. Trigger on export Atlas, export knowledge store, export as OKF, create OKF bundle, download knowledge bundle.
 ---
 
 # OKF Export
 
-Produce a portable Open Knowledge Format v0.2 bundle from the current session wiki.
+Produce a portable Open Knowledge Format v0.2 bundle from the live Atlas knowledge store.
 
 ## Process
 
-1. Read the live wiki (session wiki root as surfaced by the harness or by the skill named `okf-wiki`).
+1. Read the live Atlas store (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`).
 2. Ensure every concept page under `pages/` (or equivalent) has valid OKF frontmatter (at minimum a `type` field). If a page is missing frontmatter, add a minimal compliant one before export (do this on the export copy only).
-3. Create an export directory under the harness artifacts area, e.g. `artifacts/okf-export/YYYY-MM-DD-HHMM-wiki-bundle/`.
+3. Create an export directory under the harness artifacts area, e.g. `artifacts/okf-export/YYYY-MM-DD-HHMM-atlas-bundle/`.
 4. Copy / transform:
    - concept pages → concept files (preserve structure, ensure frontmatter)
    - `index.md` and `log.md` (OKF-reserved files)
@@ -24,8 +24,8 @@ Produce a portable Open Knowledge Format v0.2 bundle from the current session wi
 ## Rules
 
 - Always load the `okf-authority` module (or the parent `okf` skill) for format rules, using the substrate contract below.
-- Never modify the live session wiki during export (work on a copy).
-- Prefer the skill named `okf-wiki` for any structural questions about the live wiki (using the same contract).
+- Never modify the live Atlas store during export (work on a copy).
+- For live knowledge-store structure, use Atlas (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`). Do not use `okf-wiki` for new process memory.
 
 ## Substrate contract (mandatory for every skill or module load)
 

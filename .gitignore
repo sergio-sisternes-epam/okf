@@ -2,3 +2,13 @@ __pycache__/
 *.pyc
 .DS_Store
 .last-view-root
+
+# APM local artifacts
+.apm/
+.agents/
+AGENTS.md
+CLAUDE.md
+
+# Process memory must not live in this package
+references/atlas/
+references/wiki/
