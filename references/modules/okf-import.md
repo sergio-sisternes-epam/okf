@@ -1,11 +1,11 @@
 ---
 name: okf-import
-description: Bring an external Open Knowledge Format v0.2 bundle into the live session wiki. Trigger on import OKF, load knowledge bundle, ingest OKF bundle.
+description: Bring an external Open Knowledge Format v0.2 bundle into the live Atlas knowledge store. Trigger on import OKF, load knowledge bundle, ingest OKF bundle.
 ---
 
 # OKF Import
 
-Bring an external Open Knowledge Format v0.2 bundle into the live session wiki.
+Bring an external Open Knowledge Format v0.2 bundle into the live Atlas knowledge store.
 
 ## Process
 
@@ -15,17 +15,17 @@ Bring an external Open Knowledge Format v0.2 bundle into the live session wiki.
    - Every non-reserved `.md` has YAML frontmatter
    - Every frontmatter contains a non-empty `type`
 4. For each concept file:
-   - Map it into the session wiki under `pages/` (preserve relative structure where sensible)
+   - Map it into the Atlas store (preserve relative structure where sensible)
    - Keep all original frontmatter (never strip unknown keys)
-   - Resolve or rewrite links so they work inside the session wiki
-5. Update the session `index.md` and append a clear entry to `log.md` recording the import.
+   - Resolve or rewrite links so they work inside the Atlas store
+5. Update the store `index.md` and append a clear entry to `log.md` recording the import.
 6. Optionally run a lightweight pass to surface any immediate contradictions or useful links.
 7. Report what was imported (count of concepts, top-level types, any warnings).
 
 ## Rules
 
 - Always load the `okf-authority` module (or the parent `okf` skill) for format rules, using the substrate contract below.
-- Use the skill named `okf-wiki` for all writes into the session wiki (using the same contract).
+- Use Atlas for all writes into the live knowledge store (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`). Do not use `okf-wiki` for new process memory.
 - Prefer update-over-create.
 - Never strip unknown frontmatter keys.
 
