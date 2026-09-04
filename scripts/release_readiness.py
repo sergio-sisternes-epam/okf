@@ -43,11 +43,9 @@ SURFACES = (
         "README.md",
         rf"^\s*-\s+sergio-sisternes-epam/okf#v({SEMVER})\s*$",
     ),
-    VersionSurface(
-        "changelog",
-        "CHANGELOG.md",
-        rf"^## \[({SEMVER})\] - [0-9]{{4}}-[0-9]{{2}}-[0-9]{{2}}\s*$",
-    ),
+)
+CHANGELOG_PATTERN = (
+    rf"^## \[({SEMVER})\] - [0-9]{{4}}-[0-9]{{2}}-[0-9]{{2}}\s*$"
 )
 
 
@@ -83,6 +81,19 @@ def validate_versions(root: Path = ROOT) -> tuple[str | None, list[str]]:
         if actual != expected:
             errors.append(
                 f"{surface.path}: {surface.label} version {actual} != {expected}"
+            )
+
+    try:
+        changelog = (root / "CHANGELOG.md").read_text(encoding="utf-8")
+        changelog_versions = re.findall(CHANGELOG_PATTERN, changelog, re.MULTILINE)
+    except OSError as error:
+        errors.append(str(error))
+    else:
+        count = changelog_versions.count(expected)
+        if count != 1:
+            errors.append(
+                "CHANGELOG.md: expected one current package version "
+                f"{expected}, found {count}"
             )
 
     return expected, errors
