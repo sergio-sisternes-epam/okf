@@ -130,32 +130,43 @@ def main() -> int:
     parser.add_argument("--commit", help="Candidate commit SHA")
     args = parser.parse_args()
 
-    version, errors = validate_versions()
+    version, version_errors = validate_versions()
     if version is None:
         print("candidate_revision: unknown")
         print("package_version: unknown")
         print("expected_tag: unknown")
         print("is_prerelease: unknown")
         print("version_consistency: blocked")
-        for error in errors:
+        for error in version_errors:
             print(f"error: {error}")
         print("release_metadata_decision: blocked")
         return 1
 
     expected_tag = f"v{version}"
+    tag_errors: list[str] = []
     if args.tag and args.tag != expected_tag:
-        errors.append(f"release tag {args.tag} != {expected_tag}")
+        tag_errors.append(f"release tag {args.tag} != {expected_tag}")
+
+    commit_errors: list[str] = []
     if args.commit:
-        errors.extend(validate_commit(args.commit))
+        commit_errors.extend(validate_commit(args.commit))
+
+    errors = version_errors + tag_errors + commit_errors
 
     prerelease = is_prerelease(version)
     print(f"candidate_revision: {args.commit or current_commit()}")
     print(f"package_version: {version}")
     print(f"expected_tag: {expected_tag}")
     print(f"is_prerelease: {str(prerelease).lower()}")
-    print(f"version_consistency: {'blocked' if errors else 'pass'}")
+    print(
+        f"version_consistency: {'blocked' if version_errors else 'pass'}"
+    )
     if args.tag:
-        print(f"tag_consistency: {'blocked' if errors else 'pass'}")
+        print(f"tag_consistency: {'blocked' if tag_errors else 'pass'}")
+    if args.commit:
+        print(
+            f"commit_consistency: {'blocked' if commit_errors else 'pass'}"
+        )
 
     if errors:
         for error in errors:
