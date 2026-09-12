@@ -2,7 +2,7 @@
 
 Process memory does **not** live in this package. Use the canonical Atlas:
 
-https://github.com/sergio-sisternes-epam/okf-atlas (private)
+https://github.com/sergio-sisternes-epam/okf-atlas (separately licensed All Rights Reserved Atlas store)
 
 ```text
 atlas mount github.com/sergio-sisternes-epam/okf-atlas

@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Documented marketplace-first public GitHub consumer install (`okf@atlas`)
+  and removed private-package `GITHUB_APM_PAT` / Contents: read requirements
+  for public github.com sources. Direct git install of `okf#v0.2.1` remains optional.
 - Pull request CI now reports **Release readiness decision**. When metadata,
   package integrity, and both consumer jobs succeed, that check records
   `release_readiness_decision=pr-validated` and does not require exact-main.

@@ -62,10 +62,20 @@ repeat the pre-tag gate, and publish a new tag. If only GitHub Release creation
 fails because of a provider outage or permission problem, rerun the failed
 workflow for the same tag.
 
-OKF is a private source package. Consumers need Contents: read access to this
-repository through an APM-supported Git credential. The release workflow needs
-no custom secret: the repository `GITHUB_TOKEN` is read-only during validation
-and receives `contents: write` only in the release-creation job.
+Canonical consumer install is marketplace-first:
+
+```bash
+apm marketplace add sergio-sisternes-epam/atlas-marketplace --name atlas
+apm install okf@atlas
+```
+
+Direct git remains optional: `apm install sergio-sisternes-epam/okf#v0.2.1`.
+Consumers of public github.com sources do not need `GITHUB_APM_PAT` or
+Contents: read.
+
+The release workflow needs no custom secret: the repository `GITHUB_TOKEN` is
+read-only during validation and receives `contents: write` only in the
+release-creation job.
 
 ## Issues and pull requests
 
