@@ -2,43 +2,31 @@
 
 Open Knowledge Format — pure format standard and validator.
 
-APM package: `okf` from the `atlas` marketplace (`sergio-sisternes-epam/atlas-marketplace`).
+## Why / what this is not
 
-Grok-native layout: `SKILL.md` and `apm.yml` at the repository root.
+OKF is the format authority and hard validator for portable Open Knowledge
+Format **v0.2** bundles: Markdown files with YAML frontmatter.
 
-## Prerequisites
-
-- APM CLI 0.29.0 or newer.
+It is not a live knowledge store. It does not ingest, query, expand, or lint
+process memory. Those operations belong to Atlas, not this package. Do not use
+`okf-wiki` for new process memory.
 
 ## Install
 
-Add the Atlas marketplace, then install OKF from it:
+Requires APM CLI 0.29.0 or newer.
 
 ```bash
 apm marketplace add sergio-sisternes-epam/atlas-marketplace --name atlas
 apm install okf@atlas
 ```
 
-Consumers of public github.com sources do not need `GITHUB_APM_PAT` or
-Contents: read.
-
-Direct git remains optional for the immutable release tag:
+Optional: install from the immutable git tag.
 
 ```bash
 apm install sergio-sisternes-epam/okf#v0.2.1
 ```
 
-Declare the same marketplace source when consuming OKF from another APM
-project:
-
-```yaml
-dependencies:
-  apm:
-    - name: okf
-      marketplace: atlas
-```
-
-Or pin the git tag:
+Pin the same tag from another APM project:
 
 ```yaml
 dependencies:
@@ -46,27 +34,38 @@ dependencies:
     - sergio-sisternes-epam/okf#v0.2.1
 ```
 
-See `SKILL.md` for the runtime contract and `apm.yml` for package metadata.
+## Use
 
-## Process memory (not this repo)
-
-Live knowledge-store operations live in Atlas, not here. That store is a
-separately licensed All Rights Reserved Atlas store, not a GitHub secret:
+After install, ask your agent to apply the OKF skill. One example:
 
 ```text
-atlas mount github.com/sergio-sisternes-epam/okf-atlas
+Validate this directory as an OKF v0.2 bundle.
 ```
 
-Compile/query root: `.../okf-atlas/atlas` (OKF root is `atlas/SCHEMA.json`, not the git root).
+See `SKILL.md` for the runtime contract.
 
-Do not use `okf-wiki` for new process memory. Do not add `references/atlas`, `references/wiki`, or any knowledge store to this package.
+## Modules
 
-## Support
+| Module | Purpose |
+|--------|---------|
+| **okf-authority** | Normative rules, frontmatter, reserved files, and conformance |
+| **okf-export** | Produce a portable OKF bundle |
+| **okf-import** | Materialise an external OKF bundle |
 
-Source, issues, changelog, and release history:
-https://github.com/sergio-sisternes-epam/okf
+Procedures live in `references/modules/`. Extra depth stays in `SKILL.md`.
 
-See `CONTRIBUTING.md` for validation and release handoff.
+## Related
+
+- [atlas-marketplace](https://github.com/sergio-sisternes-epam/atlas-marketplace) — APM marketplace that publishes `okf`
+- [okf-atlas](https://github.com/sergio-sisternes-epam/okf-atlas) — companion store for live knowledge-store operations
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for validation, issues, and release
+handoff.
+
+Do not file public issues for vulnerabilities. Report them through a
+[private GitHub security advisory](https://github.com/sergio-sisternes-epam/okf/security/advisories/new).
 
 ## License
 
