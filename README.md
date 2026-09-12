@@ -1,6 +1,6 @@
-# okf
+# OKF
 
-Open Knowledge Format — pure format standard and validator.
+Open Knowledge Format — An APM package to distribute the OKF format foundations for anyone to consume.
 
 ## Why / what this is not
 
@@ -8,8 +8,7 @@ OKF is the format authority and hard validator for portable Open Knowledge
 Format **v0.2** bundles: Markdown files with YAML frontmatter.
 
 It is not a live knowledge store. It does not ingest, query, expand, or lint
-process memory. Those operations belong to Atlas, not this package. Do not use
-`okf-wiki` for new process memory.
+process memory.
 
 ## Install
 
@@ -47,7 +46,7 @@ See `SKILL.md` for the runtime contract.
 ## Modules
 
 | Module | Purpose |
-|--------|---------|
+| --- | --- |
 | **okf-authority** | Normative rules, frontmatter, reserved files, and conformance |
 | **okf-export** | Produce a portable OKF bundle |
 | **okf-import** | Materialise an external OKF bundle |
