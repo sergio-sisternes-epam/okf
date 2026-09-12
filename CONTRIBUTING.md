@@ -61,6 +61,18 @@ repository through an APM-supported Git credential. The release workflow needs
 no custom secret: the repository `GITHUB_TOKEN` is read-only during validation
 and receives `contents: write` only in the release-creation job.
 
+## Issues and pull requests
+
+Use the GitHub issue templates in `.github/ISSUE_TEMPLATE/` for bugs and
+feature requests. Do not file public issues for vulnerabilities; report them
+through a private GitHub security advisory.
+
+External substantive work needs a linked issue first. Maintainer-authored
+small docs or maintenance may skip that wait. Open pull requests with
+`.github/PULL_REQUEST_TEMPLATE.md`. Confirm human scope approval before agent
+implementation, except for maintainer-authored small docs or maintenance. The
+GitHub author owns the change, including any agent-generated diffs.
+
 ## Repository protection
 
 After the CI workflow is present on `main`, protect it with the **Release

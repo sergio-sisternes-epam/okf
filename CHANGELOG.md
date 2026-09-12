@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added GitHub issue and pull request templates.
 - Documented the Apache-2.0 license and copyright attribution in the README.
 
 ## [0.2.1] - 2026-09-04
