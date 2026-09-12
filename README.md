@@ -50,3 +50,8 @@ Source, issues, changelog, and release history:
 https://github.com/sergio-sisternes-epam/okf
 
 See `CONTRIBUTING.md` for validation and release handoff.
+
+## License
+
+Copyright 2026 Sergio Sisternes. Licensed under the
+[Apache License 2.0](LICENSE); see [NOTICE](NOTICE) for attribution.
