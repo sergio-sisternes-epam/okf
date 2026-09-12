@@ -1,6 +1,6 @@
 # OKF
 
-Open Knowledge Format — An APM package to distribute the OKF format foundations for anyone to consume.
+Open Knowledge Format — an APM package that distributes the pure OKF format standard and validator.
 
 ## Why / what this is not
 
