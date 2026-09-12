@@ -43,7 +43,7 @@ OKF follows semantic versioning. While the package remains below `1.0.0`, use a
 patch increment for compatible fixes and documentation, and a minor increment
 for new capability or a compatibility-breaking format contract.
 
-1. Update the package version in `apm.yml`, `SKILL.md`, `README.md`, and
+1. Update the package version in `apm.yml`, `SKILL.md`, and
    `CHANGELOG.md`.
 2. Run the local validation above and merge through the normal review process.
 3. Run **OKF CI** manually against the exact `main` commit intended for release.
