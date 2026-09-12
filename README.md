@@ -34,7 +34,8 @@ project:
 ```yaml
 dependencies:
   apm:
-    - okf@atlas
+    - name: okf
+      marketplace: atlas
 ```
 
 Or pin the git tag:
