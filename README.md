@@ -19,6 +19,8 @@ apm marketplace add sergio-sisternes-epam/atlas-marketplace --name atlas
 apm install okf@atlas
 ```
 
+`--name atlas` is required so the package resolves as `okf@atlas`.
+
 ## Use
 
 After install, ask your agent to apply the OKF skill. One example:
