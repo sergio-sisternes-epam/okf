@@ -26,6 +26,12 @@ Then install the checked-out package into a disposable consumer and run
 `apm audit --ci --no-policy --no-fail-fast`. CI exercises both the shared
 `agent-skills` target and APM's stable multi-runtime target set.
 
+Pull request CI also reports **Release readiness decision**. When metadata,
+package integrity, and both consumer jobs succeed, that job records
+`release_readiness_decision=pr-validated` and does not require the candidate
+to be exact `main`. On `main` or a tag, the same job keeps the existing
+ready-to-tag / ready-to-publish exact-main decision.
+
 `apm compile --validate` and `apm pack` are not validation gates for this
 package. OKF uses the supported root `SKILL.md` source-package shape, has no
 `.apm/` compilation input, and is distributed directly from its immutable Git

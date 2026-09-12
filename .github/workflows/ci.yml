@@ -85,7 +85,7 @@ jobs:
       - metadata
       - package
       - consumer
-    if: always() && github.event_name != 'pull_request'
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
@@ -96,16 +96,14 @@ jobs:
           METADATA_RESULT: ${{ needs.metadata.result }}
           PACKAGE_RESULT: ${{ needs.package.result }}
           CONSUMER_RESULT: ${{ needs.consumer.result }}
+          EVENT_NAME: ${{ github.event_name }}
           REF_TYPE: ${{ github.ref_type }}
           REF_NAME: ${{ github.ref_name }}
           CANDIDATE_REVISION: ${{ github.sha }}
         run: |
           set -euo pipefail
-          git fetch --no-tags origin main:refs/remotes/origin/main
-          main_revision="$(git rev-parse refs/remotes/origin/main)"
           {
             echo "candidate_revision=$CANDIDATE_REVISION"
-            echo "main_revision=$main_revision"
             echo "release_metadata=$METADATA_RESULT"
             echo "package_integrity=$PACKAGE_RESULT"
             echo "consumer_install=$CONSUMER_RESULT"
@@ -116,6 +114,14 @@ jobs:
             echo "release_readiness_decision=blocked" | tee -a "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
+          if [ "$EVENT_NAME" = pull_request ]; then
+            echo "release_readiness_decision=pr-validated" |
+              tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          main_revision="$(git rev-parse refs/remotes/origin/main)"
+          echo "main_revision=$main_revision" | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$REF_TYPE" = tag ]; then
             echo "release_validation_decision=ready to publish" |
               tee -a "$GITHUB_STEP_SUMMARY"

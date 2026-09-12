@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added GitHub issue and pull request templates.
 - Documented the Apache-2.0 license and copyright attribution in the README.
 
+### Changed
+
+- Pull request CI now reports **Release readiness decision**. When metadata,
+  package integrity, and both consumer jobs succeed, that check records
+  `release_readiness_decision=pr-validated` and does not require exact-main.
+
 ## [0.2.1] - 2026-09-04
 
 ### Added
