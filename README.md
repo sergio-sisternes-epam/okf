@@ -19,20 +19,6 @@ apm marketplace add sergio-sisternes-epam/atlas-marketplace --name atlas
 apm install okf@atlas
 ```
 
-Optional: install from the immutable git tag.
-
-```bash
-apm install sergio-sisternes-epam/okf#v0.2.1
-```
-
-Pin the same tag from another APM project:
-
-```yaml
-dependencies:
-  apm:
-    - sergio-sisternes-epam/okf#v0.2.1
-```
-
 ## Use
 
 After install, ask your agent to apply the OKF skill. One example:

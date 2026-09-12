@@ -33,16 +33,6 @@ class VersionSurface:
 SURFACES = (
     VersionSurface("manifest", "apm.yml", rf"^version:\s*({SEMVER})\s*$"),
     VersionSurface("skill", "SKILL.md", rf"^version:\s*({SEMVER})\s*$"),
-    VersionSurface(
-        "install command",
-        "README.md",
-        rf"^apm install sergio-sisternes-epam/okf#v({SEMVER})\s*$",
-    ),
-    VersionSurface(
-        "dependency example",
-        "README.md",
-        rf"^\s*-\s+sergio-sisternes-epam/okf#v({SEMVER})\s*$",
-    ),
 )
 CHANGELOG_PATTERN = (
     rf"^## \[({SEMVER})\] - [0-9]{{4}}-[0-9]{{2}}-[0-9]{{2}}\s*$"
