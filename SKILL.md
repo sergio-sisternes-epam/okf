@@ -1,6 +1,6 @@
 ---
 name: okf
-description: Use this skill for Open Knowledge Format (OKF) rules, compliance, frontmatter requirements, and validation of any OKF bundle. Triggers on okf, Open Knowledge Format, OKF compliance, OKF frontmatter, validate OKF, OKF rules, and pure format questions. This is the pure format standard and validator. For live knowledge-store operations (ingest, query, expand, etc.) use Atlas (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`). Do not use okf-wiki for new process memory.
+description: Use this skill for Open Knowledge Format (OKF) rules, compliance, frontmatter requirements, and validation of any OKF bundle. Triggers on okf, Open Knowledge Format, OKF compliance, OKF frontmatter, validate OKF, OKF rules, and pure format questions. Open Knowledge Format — an APM package that distributes the pure OKF format standard and validator. For live knowledge-store operations (ingest, query, expand, etc.) use Atlas (`atlas mount github.com/sergio-sisternes-epam/okf-atlas`; compile/query root `.../okf-atlas/atlas`). Do not use okf-wiki for new process memory.
 version: 0.2.1
 activation_card: on
 ---
