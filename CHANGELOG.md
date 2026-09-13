@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Package `description` now matches the README lede.
 - Restructured the root README to the family outline (purpose, why / what
   this is not, install, use, modules, related, contributing, license).
   The README documents marketplace-only consumer install (`okf@atlas`).
