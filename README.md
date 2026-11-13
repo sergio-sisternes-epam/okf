@@ -30,8 +30,8 @@ apm install okf@atlas
 Ask an agent to apply the OKF skill to the bundle or content at hand:
 
 - `Validate this directory as an OKF v0.2 bundle.`
-- `Export these Markdown pages as a portable OKF v0.2 bundle.`
-- `Import this external OKF bundle into the target directory.`
+- `Export these Markdown pages from the live Atlas store as a portable OKF v0.2 bundle.`
+- `Import this external OKF bundle into the live Atlas store.`
 
 ## Prerequisites
 
